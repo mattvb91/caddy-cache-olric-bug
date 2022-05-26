@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+
+  caddy:
+    build:
+      context: ./docker/caddy
+    restart: unless-stopped
+    command: [ "caddy", "run", "--resume" ]
+    ports:
+      - "2019:2019"
+      - "80:80"
+    volumes:
+      - ./caddy:/config/caddy
